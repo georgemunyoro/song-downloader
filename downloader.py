@@ -7,11 +7,12 @@ import urllib
 import spotipy
 import sys
 import shutil
+from config import CLIENT_SECRET, CLIENT_ID
 
 ydl = youtube_dl.YoutubeDL()
 
-CLIENT_SECRET = 'YOUR SPOTIFY CLIENT SECRET HERE'
-CLIENT_ID = 'YOUR SPOTIFY CLIENT ID HERE'
+CLIENT_SECRET = CLIENT_SECRET
+CLIENT_ID = CLIENT_ID
 
 creds = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
 spotify = spotipy.Spotify(client_credentials_manager=creds)
