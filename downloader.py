@@ -1,5 +1,6 @@
 from spotipy.oauth2 import SpotifyClientCredentials
 from youtube_search import YoutubeSearch
+from config import CLIENT_SECRET, CLIENT_ID
 import youtube_dl
 import eyed3
 import json
@@ -7,7 +8,20 @@ import urllib
 import spotipy
 import sys
 import shutil
-from config import CLIENT_SECRET, CLIENT_ID
+
+if len(sys.argv) == 2:
+    if sys.argv[1] == '--help' or sys.argv[1] == '-h':
+        print('Usage : ')
+        print('pydown [text file containing list of songs] [folder to save them to]')
+        print('\nExample : ')
+        print('pydown songs.txt "/path/to/download/folder"\n')
+
+        quit()
+
+elif len(sys.argv) != 3:
+    print('Invalid arguments, use pydown --help for more info')
+
+    quit()
 
 ydl = youtube_dl.YoutubeDL()
 
