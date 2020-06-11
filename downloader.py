@@ -11,9 +11,6 @@ from config import CLIENT_SECRET, CLIENT_ID
 
 ydl = youtube_dl.YoutubeDL()
 
-CLIENT_SECRET = CLIENT_SECRET
-CLIENT_ID = CLIENT_ID
-
 creds = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
 spotify = spotipy.Spotify(client_credentials_manager=creds)
 
@@ -93,7 +90,7 @@ with open(sys.argv[1]) as songlistfile:
 
             print('-'*50)
 
-        except:
+        except Exception as e:
 
             try:
 
@@ -114,7 +111,7 @@ with open(sys.argv[1]) as songlistfile:
                 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                     ydl.download(['http://www.youtube.com'+yt_res['videos'][0]['link']])
 
-            except:
+            except Exception as e:
                 print(file, 'FAILED')
                 open('log.txt', 'a').write(file)
 
