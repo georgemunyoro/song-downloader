@@ -40,7 +40,7 @@ with open(sys.argv[1]) as songlistfile:
         file = file.replace('-', '')
         file = file.replace('(', '')
         file = file.replace(')', '')
-        file = ''.join(file.split())
+        file = ' '.join(file.split())
 
         try:
             print('-'*50)
