@@ -78,10 +78,7 @@ with open(sys.argv[1]) as songlistfile:
                 ydl.download(['http://www.youtube.com'+yt_res['videos'][0]['link']])
 
             # embed metadata
-    #        urllib.request.urlretrieve(image_url, 'cover.jpg')
-
             track_file = eyed3.load(f'{SAVE_DIR}{yt_id}.mp3')
-
             track_file.tag.artist = str(artist)
             track_file.tag.album  = str(album)
             track_file.tag.album_artist = str(metadata['album']['artists'][0]['name'])
@@ -91,7 +88,6 @@ with open(sys.argv[1]) as songlistfile:
             data = urllib.request.urlopen(image_url).read()
 
             track_file.tag.images.set(3, data, "image/jpeg", u"")
-
             track_file.tag.save()
 
             shutil.move(f'{SAVE_DIR}{yt_id}.mp3', f'{SAVE_DIR}{artist} - {title}.mp3')
