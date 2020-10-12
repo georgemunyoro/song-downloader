@@ -108,8 +108,7 @@ with open(sys.argv[1]) as songlistfile:
 
             try:
 
-                yt_res = YoutubeSearch(file).to_json()
-                yt_res = json.loads(yt_res)
+                yt_res = json.loads(YoutubeSearch(file).to_json())
                 yt_id  = yt_res['videos'][0]['id']
 
                 ydl_opts = {
