@@ -9,6 +9,7 @@ import spotipy
 import sys
 import shutil
 
+
 if len(sys.argv) == 2:
     if sys.argv[1] == '--help' or sys.argv[1] == '-h':
         print('Usage : ')
@@ -16,21 +17,22 @@ if len(sys.argv) == 2:
         print('\nExample : ')
         print('pydown songs.txt "/path/to/download/folder"\n')
         quit()
-
 elif len(sys.argv) != 3:
     print('Invalid arguments, use pydown --help for more info')
     quit()
 
+    
 ydl = youtube_dl.YoutubeDL()
-
 creds = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
 spotify = spotipy.Spotify(client_credentials_manager=creds)
 
 SAVE_DIR = sys.argv[2]
 
+
 if SAVE_DIR[len(SAVE_DIR)-1] != '/':
     SAVE_DIR += '/'
 
+    
 with open(sys.argv[1]) as songlistfile:
     for file in songlistfile:
 
@@ -119,4 +121,3 @@ with open(sys.argv[1]) as songlistfile:
             except Exception as e:
                 print(file, 'FAILED')
                 open('log.txt', 'a').write(file)
-
