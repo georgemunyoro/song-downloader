@@ -15,12 +15,10 @@ if len(sys.argv) == 2:
         print('pydown [text file containing list of songs] [folder to save them to]')
         print('\nExample : ')
         print('pydown songs.txt "/path/to/download/folder"\n')
-
         quit()
 
 elif len(sys.argv) != 3:
     print('Invalid arguments, use pydown --help for more info')
-
     quit()
 
 ydl = youtube_dl.YoutubeDL()
@@ -58,9 +56,7 @@ with open(sys.argv[1]) as songlistfile:
             image_url = metadata['album']['images'][0]['url']
 
             # search youtube and download mp3 file
-
-            yt_res = YoutubeSearch(artist + ' ' + file, max_results=1).to_json()
-            yt_res = json.loads(yt_res)
+            yt_res = json.loads(YoutubeSearch(artist + ' ' + file, max_results=1).to_json())
             yt_id  = yt_res['videos'][0]['id']
 
             ydl_opts = {
